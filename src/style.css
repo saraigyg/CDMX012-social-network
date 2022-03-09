@@ -244,7 +244,7 @@ body {
   body {
     background-image: none;
     display: flex;
-  }
+  } bien
 
   .landing-page-container {
     background-color: white;
@@ -252,11 +252,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-  }
+  } bien
 
   .sign-up-in-container {
     position: relative;
-  }
+  } bien
 
   .landing-page-img {
     background-image: url("./assets/front-page-img.jpg");
@@ -264,7 +264,7 @@ body {
     background-size: cover;
     background-color: #951c45;
     width: 55%;
-  }
+  } bien
   
   .logo-header {
     display: flex;
