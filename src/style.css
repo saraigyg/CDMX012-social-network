@@ -62,8 +62,9 @@
     display: flex;
     flex-wrap: wrap;
     padding-left: 5%;
-    bottom: 0;
+    position:absolute;
     visibility: hidden;
+    top:370px;
   }
   
   .createAccount-container h2 {
@@ -138,6 +139,10 @@
       display:flex;
       justify-content: space-evenly;
   }
+
+  .logoMail, .logoGoogle, .logoGithub {
+    cursor:pointer;
+  }
   
   /* Mensaje de error */
   .error {
@@ -146,18 +151,27 @@
       padding: 2%;
       text-align: center;
   }
-  
+
   /**enterAccount-container**/
-  
-  .enterAccount-container {
-    position: absolute;
-    background-color: white;
-    border-radius: 10% 10% 0 0;
-    bottom: 0;
-    height: 62%;
-    width: 100%;
-    visibility: hidden;
-  }
+
+.enterAccount-container {
+  position: absolute;
+  background-color: white;
+  border-radius: 10% 10% 0 0;
+  top:354px;
+  visibility: hidden;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 5%;
+}
+.enterAccount-container h2 {
+  padding-top: 5%;
+  text-align: left;
+  font-style: bold;
+  font-size: 2em;
+  width: 100%;
+}
   
   @media screen and (min-width: 768px){
       body {
@@ -196,4 +210,33 @@
       .enterAccount-container{
           display: none;
       }
+
+      /*arreglo de ventana create an account*/
+      .createAccount-container {
+        top:0;
+        width:40%;
+        height:100%;
+        display:flex;
+        justify-content: center;
+      }
+      
+      .createAccount-container h2 {
+        text-align: center;
+        margin-top:5%;
+      }
+      
+      .enterAccount-container {
+        top:0;
+        height:100%;
+        width: 40%;
+        display:flex;
+        justify-content: center;
+      }
+      
+      .enterAccount-container h2 {
+        margin-top:15%;
+        text-align: center;
+      }
   }
+
+  
