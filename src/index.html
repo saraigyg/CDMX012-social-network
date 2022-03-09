@@ -46,8 +46,32 @@
             <img class="logoGithub" id="btn-github" src="./assets/logotipo-de-github (1).png" alt="logoGithub">
           </span>
         </form>
-      </div> 
 
+      </div> 
+      
+      <div class="add-info-container">
+        <h2 class="info-title">Add info</h2>
+        <form id="moreInfo-user">
+          <label for="name" class="name">Profile name</label>
+          <img class="nameicon" src='./assets/icons8-usuario-48 1.png' alt="name" />
+          <input name="name" class="name" id="txtname" type="text" placeholder="Write down your name here" required />
+         
+          <label for="username" class="username">Username</label>
+          <img class="user" src='./assets/arroba.png' alt="user" />
+          <input name="username" class="username" id="txtUsername" type="text" placeholder="Write down your username here" required />
+          
+          <label for="description">Bio</label>
+          <textarea id="description" name="description"></textarea>
+          
+          <div class="profile-photo">
+            <img class="photo" src="./assets/user.png" alt="profile photo">
+            <input type="file" />
+          </div>
+
+          <input type="button" class="btn-username" id="btn-username" value="Save" />
+        </form>
+      </div>
+      
       <div class="enterAccount-container">
         <h2 class="account-title">Welcome back</h2>
         <form class="account-form" id="signUpForm">
@@ -69,6 +93,7 @@
           </span>
         </form>
       </div>
+
     </section>
   </div>
 
