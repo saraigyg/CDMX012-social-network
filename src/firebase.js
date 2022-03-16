@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { app } from './firebase-config.js';
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider, onAuthStateChanged, getAdditionalUserInfo } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js';
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider, onAuthStateChanged, getAdditionalUserInfo, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js';
 import { onNavigate } from '../app.js';
 import { showSignUpError } from '../ui.js';
 
@@ -111,7 +111,3 @@ function askMoreInfo (result){
 
 // sign in with email and password in welcome back page 
 export const signInAccount = (email, pass) => signInWithEmailAndPassword(auth, email, pass);
-
-
-
-

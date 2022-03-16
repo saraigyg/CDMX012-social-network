@@ -123,13 +123,11 @@ export const signInPage = () => {
   btnSignInWelcome.addEventListener('click', () => {
     const email = document.getElementById('txtEmail').value;
     const password = document.getElementById('txtPassword').value;
-    const form = document.getElementById('signUpForm');
     signInAccount(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
         errorMessage.innerHTML = '';
-        form.reset();
       })
       .catch((error) => {
         console.log(error);
