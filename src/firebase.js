@@ -3,13 +3,13 @@
 import {
   getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider,
   FacebookAuthProvider, GithubAuthProvider, getAdditionalUserInfo, signInWithEmailAndPassword,
-} from './firebase-imports';
+} from './firebase-imports.js';
 import { app } from './firebase-config.js';
 import { onNavigate } from './app.js';
 import { showSignUpError } from './ui.js';
 
 // Init firebase app
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 // Navigate to add-info page
 function askMoreInfo(result) {
@@ -39,7 +39,7 @@ export const createAccount = (email, pass) => {
 };
 
 // Sign up with Google
-const googleProvider = new GoogleAuthProvider();
+export const googleProvider = new GoogleAuthProvider();
 
 export const signUpGoogle = () => {
   signInWithPopup(auth, googleProvider)
@@ -61,7 +61,7 @@ export const signUpGoogle = () => {
 };
 
 // Sign up with Facebook
-const facebookProvider = new FacebookAuthProvider();
+export const facebookProvider = new FacebookAuthProvider();
 
 export const signUpFacebook = () => {
   signInWithPopup(auth, facebookProvider)
@@ -82,7 +82,7 @@ export const signUpFacebook = () => {
 };
 
 // Sign up with Github
-const githubProvider = new GithubAuthProvider();
+export const githubProvider = new GithubAuthProvider();
 
 export const signUpGithub = () => {
   signInWithPopup(auth, githubProvider)

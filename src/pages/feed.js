@@ -1,3 +1,5 @@
+import { addDoc, collection, getFirestore } from '../firebase-imports.js';
+
 export const feed = () => {
   const readingPage = document.createElement('div');
   readingPage.setAttribute('class', 'readingPage');
@@ -38,11 +40,18 @@ export const feed = () => {
   readingBook.setAttribute('placeholder', 'Insert the title of the book you are reading here');
 
   const readingDescription = document.createElement('textarea');
+  readingDescription.setAttribute('id', 'post-content');
   readingDescription.setAttribute('class', 'post-content');
   readingDescription.setAttribute('name', 'post-content');
   readingDescription.setAttribute('placeholder', "What's on your mind?");
 
-  readingForm.append(readingTitle, readingBook, readingDescription);
+  const btnSharePost = document.createElement('input');
+  btnSharePost.setAttribute('type', 'button');
+  btnSharePost.setAttribute('class', 'btnSharePost');
+  btnSharePost.setAttribute('id', 'btnSharePost');
+  btnSharePost.setAttribute('value', 'Share');
+
+  readingForm.append(readingTitle, readingBook, readingDescription, btnSharePost);
 
   // Posts section
   const postsArea = document.createElement('div');
@@ -53,3 +62,15 @@ export const feed = () => {
 
   return readingPage;
 };
+
+const btnSharePost = document.querySelector('btnSharePost');
+
+btnSharePost.addEventListener('click', () => {
+  const bookTitle = document.getElementById('bookTitle').value;
+  const bookDescription = document.getElementById('post-content').value;
+  console.log(bookTitle, bookDescription);
+});
+
+const db = getFirestore();
+
+export const savePosts = (title, bookDescription) => addDoc(collection(db, 'posts'), { title, bookDescription });
