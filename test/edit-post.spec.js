@@ -12,6 +12,7 @@ describe('createPosts edit btns', () => {
     text: 'I like book1',
     date: 'Tooday',
     uid: '6fgyg87tguyg78t76t87g87t',
+    likes: ['userOne'],
   };
   const elements = createPosts(postData, '6fgyg87tguyg78t76t87g87t', 'name', 'username');
   const node = elements.querySelector('.to-edit');
@@ -36,6 +37,7 @@ describe('toContent', () => {
     text: 'I like book1',
     date: 'Tooday',
     uid: '6fgyg87tguyg78t76t87g87t',
+    likes: ['userOne'],
   };
   const elements = createPosts(postData, '6fgyg87tguyg78t76t87g87t', 'name', 'username');
   const node = elements.querySelector('.to-edit');
