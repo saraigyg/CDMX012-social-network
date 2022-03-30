@@ -1,10 +1,24 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-classes-per-file */
 export const getFirestore = () => Promise.resolve({});
-export const doc = () => Promise.resolve({});
+export const doc = (db, collection, docId) => ({ db, collection, docId });
 export const setDoc = () => Promise.resolve({});
-export const getDoc = () => Promise.resolve({});
-export const getAuth = () => Promise.resolve({});
+export const getDoc = jest.fn(
+  () => {
+    const info = {
+      exists: () => false,
+    };
+
+    return Promise.resolve(info);
+  },
+);
+
+const user = {
+  currentUser: {
+    uid: 'saraiG',
+  },
+};
+export const getAuth = () => user;
 export const onAuthStateChanged = () => Promise.resolve({});
 export const initializeApp = () => Promise.resolve({});
 export const createUserWithEmailAndPassword = () => Promise.resolve({});
