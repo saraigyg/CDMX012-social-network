@@ -9,7 +9,7 @@ import { createPosts } from '../components/renderingPosts.js';
 /* import { onNavigate } from '../app.js'; */
 
 // Saves the data from the post just created in the 'posts' collection
-export async function saveNewPostData(postsForm) {
+export async function saveNewPostData(postsForm) { // TEST: setDoc .tohavebeencalled
   const db = getFirestore();
 
   const auth = getAuth(app); // current user
@@ -38,9 +38,7 @@ export async function saveNewPostData(postsForm) {
 }
 
 // Gets the original poster(OP) data and renders all the posts
-function renderingPosts(post) {
-  const db = getFirestore();
-
+function renderingPosts(post) { // TEST: createPosts to have been called, mockear q
   const auth = getAuth(app); // current user
   const user = auth.currentUser;
 
@@ -48,6 +46,7 @@ function renderingPosts(post) {
   const postsArea = document.querySelector('#postsArea');
   postsArea.innerHTML = '';
 
+  const db = getFirestore();
   const profilesRef = collection(db, 'profiles'); // Gets the profile that matches the post.uid
   const q = query(profilesRef, where('uid', '==', post.uid));
   let name = '';

@@ -10,7 +10,7 @@ import { onNavigate } from '../app.js';
 import { showSignUpError } from '../components/ui.js';
 
 // Navigate to add-info page
-function askMoreInfo(result) {
+export function askMoreInfo(result) {
   onNavigate('/add-info');
 
   const moreInfoUser = document.querySelector('#signUpForm');
@@ -50,7 +50,6 @@ export const signUpGoogle = async () => {
       }
       userCreatedGoogle = true;
     }).catch((error) => {
-      /* const errorMessage = error.message; */
       console.log(error);
       userCreatedGoogle = false;
     });
@@ -59,39 +58,45 @@ export const signUpGoogle = async () => {
 };
 
 // Sign up with Facebook
-export const signUpFacebook = () => {
+export const signUpFacebook = async () => {
   const auth = getAuth(app);
   const facebookProvider = new FacebookAuthProvider();
+  let userCreatedFacebook;
 
-  signInWithPopup(auth, facebookProvider)
+  await signInWithPopup(auth, facebookProvider)
     .then((result) => {
       if (getAdditionalUserInfo(result).isNewUser) {
         askMoreInfo(result);
       } else {
         onNavigate('/home');
       }
+      userCreatedFacebook = true;
     }).catch((error) => {
-      const errorMessage = error.message;
-      console.log(errorMessage);
+      console.log(error);
+      userCreatedFacebook = false;
     });
+  return userCreatedFacebook;
 };
 
 // Sign up with Github
-export const signUpGithub = () => {
+export const signUpGithub = async () => {
   const auth = getAuth(app);
   const githubProvider = new GithubAuthProvider();
+  let userCreatedGithub;
 
-  signInWithPopup(auth, githubProvider)
+  await signInWithPopup(auth, githubProvider)
     .then((result) => {
       if (getAdditionalUserInfo(result).isNewUser) {
         askMoreInfo(result);
       } else {
         onNavigate('/home');
       }
+      userCreatedGithub = true;
     }).catch((error) => {
-      const errorMessage = error.message;
-      console.log(errorMessage);
+      console.log(error);
+      userCreatedGithub = false;
     });
+  return userCreatedGithub;
 };
 
 // Sign in with email and password
