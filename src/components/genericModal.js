@@ -7,6 +7,7 @@ export const genericModal = (funcion, parametros, textModal) => {
   if (modal === null) {
     modal = document.createElement('div');
     modal.setAttribute('class', 'modal show-modal');
+    modal.setAttribute('id', 'modal');
     const modalContent = document.createElement('div');
     modalContent.setAttribute('class', 'modal-content');
     const closebtn = document.createElement('span');

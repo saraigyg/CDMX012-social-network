@@ -11,7 +11,13 @@ export const getDoc = jest.fn(
     return Promise.resolve(info);
   },
 );
-export const getAuth = () => Promise.resolve({});
+
+const user = {
+  currentUser: {
+    uid: 'saraiG',
+  },
+};
+export const getAuth = () => user;
 export const onAuthStateChanged = () => Promise.resolve({});
 export const initializeApp = () => Promise.resolve({});
 export const createUserWithEmailAndPassword = () => Promise.resolve({});
