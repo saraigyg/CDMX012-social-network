@@ -2,7 +2,8 @@
  * @jest-environment jsdom
  */
 import {
-  showSignUpError, showIncorrectPass, showPassword, showAndHideItems,
+  showSignUpError, showIncorrectPass, showPassword, showAndHideItems, usernameError, usernameTaken,
+  validUsername, emptyFields,
 } from '../src/components/ui.js';
 
 jest.mock('../src/firebase-imports.js');
@@ -104,5 +105,59 @@ describe('Tests  for the style display of shown and hidden items', () => {
 
     expect(item1.style.display).toBe('flex');
     expect(item2.style.display).toBe('none');
+  });
+});
+
+describe('Tests to check error message when username is no valid', () => {
+  test('Show username error', () => {
+    document.body.innerHTML = `<div id="errorAreaUsername"></div>
+    <div id="errorAreaForm"></div>`;
+    const errorArea1 = document.getElementById('errorAreaUsername');
+    const errorArea2 = document.getElementById('errorAreaForm');
+    usernameError();
+
+    expect(errorArea1.innerHTML).toBe('Invalid username');
+    expect(errorArea2.innerHTML).toBe('Usernames can only contain letters, numbers, . and _');
+    expect(errorArea1.style.color).toBe('red');
+    expect(errorArea2.style.color).toBe('red');
+  });
+});
+
+describe('Tests to check error message when username is taken', () => {
+  test('Show username error', () => {
+    document.body.innerHTML = `<div id="errorAreaUsername"></div>
+    <div id="errorAreaForm"></div>`;
+    const errorArea = document.getElementById('errorAreaUsername');
+    const errorArea2 = document.getElementById('errorAreaForm');
+    usernameTaken();
+
+    expect(errorArea.innerHTML).toBe('This username is already taken');
+    expect(errorArea2.innerHTML).toBe('');
+    expect(errorArea.style.color).toBe('red');
+  });
+});
+
+describe('Tests to check error message when username is valid', () => {
+  test('Show username error', () => {
+    document.body.innerHTML = `<div id="errorAreaUsername"></div>
+    <div id="errorAreaForm"></div>`;
+    const errorArea = document.getElementById('errorAreaUsername');
+    const errorArea2 = document.getElementById('errorAreaForm');
+    validUsername();
+
+    expect(errorArea.innerHTML).toBe('Valid username');
+    expect(errorArea2.innerHTML).toBe('');
+    expect(errorArea.style.color).toBe('green');
+  });
+});
+
+describe('Tests to check error message when there are empty fields', () => {
+  test('Show username error', () => {
+    document.body.innerHTML = '<div id="errorAreaForm"></div>';
+    const errorArea = document.getElementById('errorAreaForm');
+    emptyFields();
+
+    expect(errorArea.innerHTML).toBe('Profile name and/or username cannot be empty');
+    expect(errorArea.style.color).toBe('red');
   });
 });
