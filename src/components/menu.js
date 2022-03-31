@@ -9,7 +9,6 @@ export const menu = () => {
 
   const menuContainer = document.createElement('div');
   menuContainer.setAttribute('id', 'menu-container');
-
   const profileInfo = document.createElement('div');
   profileInfo.setAttribute('id', 'profile-container');
 
@@ -43,6 +42,7 @@ export const menu = () => {
   const SignOutImg = document.createElement('img');
   SignOutImg.setAttribute('src', './assets/logout.png');
   const SignOutTxt = document.createElement('p');
+  SignOutTxt.setAttribute('id', 'out');
   SignOutTxt.textContent = 'Sign Out';
   SignOut.append(SignOutImg, SignOutTxt);
   configuration.append(SignOut);
@@ -55,6 +55,11 @@ export const menu = () => {
     }).catch((error) => {
       console.log(error);
     });
+
+    // signOutBR();
+    // const body = document.body;
+    // body.style.overflow = '';
+    // onNavigate('/');
   });
 
   menuContainer.append(profileInfo, configuration);

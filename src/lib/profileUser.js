@@ -15,8 +15,9 @@ onAuthStateChanged(auth, (user) => {
 export async function getProfileInfo() {
   const docRef = doc(db, 'profiles', currentUid);
   const docSnap = await getDoc(docRef);
-  console.log(docSnap.exists());
+  console.log(docSnap);
   if (docSnap.exists()) {
+    console.log('data', docSnap.data());
     return docSnap.data();
   }
   return null;

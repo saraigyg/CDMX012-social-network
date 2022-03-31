@@ -17,7 +17,8 @@ const user = {
     uid: 'saraiG',
   },
 };
-export const getAuth = () => user;
+// eslint-disable-next-line no-unused-vars
+export const getAuth = (app) => user;
 export const onAuthStateChanged = () => Promise.resolve({});
 export const initializeApp = () => Promise.resolve({});
 export const createUserWithEmailAndPassword = () => Promise.resolve({});
@@ -47,4 +48,5 @@ export const updateDoc = () => Promise.resolve({}); // updateDoc regresa Promise
 export const orderBy = () => Promise.resolve({});
 export const serverTimestamp = () => Promise.resolve({});
 export const collection = () => Promise.resolve({});
-export const signOut = () => Promise.resolve({});
+// eslint-disable-next-line no-unused-vars
+export const signOut = jest.fn((auth) => Promise.resolve());
