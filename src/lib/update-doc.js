@@ -1,7 +1,6 @@
 import { getFirestore, doc, updateDoc } from '../firebase-imports.js';
 
 export async function updatePost(idDoc, data) {
-  console.log('En updatePost');
   const db = getFirestore();
   const postRef = doc(db, 'posts', idDoc);
   await updateDoc(postRef, data);

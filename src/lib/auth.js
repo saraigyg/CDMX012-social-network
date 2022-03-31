@@ -106,9 +106,10 @@ export async function signInAccount(email, pass) {
 }
 
 // Sign Out
-export const signOutBR = () => {
+export const signOutBR = async () => {
   const auth = getAuth(app);
-  signOut(auth);
+  const out = await signOut(auth);
+  return out;
 };
 
 // Revisar
