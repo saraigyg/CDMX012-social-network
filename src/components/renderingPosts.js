@@ -9,7 +9,6 @@ export const createPosts = (postData, currentUid, name, username) => {
   post.setAttribute('class', 'post-container');
   const infoUserPost = document.createElement('div');
   infoUserPost.setAttribute('class', 'info-user-post');
-  /* const line = document.createElement('hr'); */
   const info = document.createElement('div');
   info.setAttribute('class', 'info');
 
@@ -26,7 +25,7 @@ export const createPosts = (postData, currentUid, name, username) => {
   date.innerHTML = `· ${postData.date}`;
 
   info.append(nameProfile, userName, date);
-  infoUserPost.append(/* line, */ info);
+  infoUserPost.append(info);
 
   const nodeTobeEdited = document.createElement('div');
   nodeTobeEdited.setAttribute('class', 'to-edit');
@@ -40,6 +39,7 @@ export const createPosts = (postData, currentUid, name, username) => {
   // console.log(postData.likes);
   const sessionUser = currentUser();
   // console.log(sessionUser.uid);
+
   if (postData.likes.includes(sessionUser.uid)) {
     doIlikePost = true;
   }

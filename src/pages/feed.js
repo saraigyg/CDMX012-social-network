@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { saveNewPostData, getPosts } from '../lib/posts.js';
 import { slideshow } from '../components/slideshow.js';
-import { showAndHideItems, goToTop } from '../components/ui.js';
+import { showAndHideItems, goToTop, cleanForm } from '../components/ui.js';
 import { menu } from '../components/menu.js';
 
 export const feed = () => {
@@ -111,6 +111,7 @@ export const feed = () => {
   newPostBtn.addEventListener('click', () => {
     saveNewPostData(readingForm);
     showAndHideItems(makeNewPost, readingForm);
+    cleanForm();
   });
 
   return readingPage;

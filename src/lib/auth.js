@@ -9,11 +9,8 @@ import { app } from './firebase-config.js';
 import { onNavigate } from '../app.js';
 import { showSignUpError } from '../components/ui.js';
 
-// Init firebase app
-const auth = getAuth(app);
-
 // Navigate to add-info page
-function askMoreInfo(result) {
+export function askMoreInfo(result) {
   onNavigate('/add-info');
 
   const moreInfoUser = document.querySelector('#signUpForm');
@@ -25,13 +22,12 @@ function askMoreInfo(result) {
 
 // Sign up with email and password
 export const createAccount = (email, pass) => {
+  const auth = getAuth(app);
   const errorA = document.getElementById('errorArea');
 
   createUserWithEmailAndPassword(auth, email, pass)
     .then((userCredential) => {
       askMoreInfo(userCredential);
-      /* const user = userCredential.user;
-      console.log(user); */
       errorA.innerHTML = '';
     })
     .catch((error) => {
@@ -40,75 +36,97 @@ export const createAccount = (email, pass) => {
 };
 
 // Sign up with Google
-const googleProvider = new GoogleAuthProvider();
+export const signUpGoogle = async () => {
+  const auth = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
+  let userCreatedGoogle;
 
-export const signUpGoogle = () => {
-  signInWithPopup(auth, googleProvider)
+  await signInWithPopup(auth, googleProvider)
     .then((result) => {
       if (getAdditionalUserInfo(result).isNewUser) {
         askMoreInfo(result);
       } else {
-        /* console.log('Already registered'); */
         onNavigate('/home');
       }
+      userCreatedGoogle = true;
+    }).catch((error) => {
+      console.log(error);
+      userCreatedGoogle = false;
     });
-  /* .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.email;
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      console.log(errorMessage);
-    }); */
+
+  return userCreatedGoogle;
 };
 
 // Sign up with Facebook
-const facebookProvider = new FacebookAuthProvider();
+export const signUpFacebook = async () => {
+  const auth = getAuth(app);
+  const facebookProvider = new FacebookAuthProvider();
+  let userCreatedFacebook;
 
-export const signUpFacebook = () => {
-  signInWithPopup(auth, facebookProvider)
+  await signInWithPopup(auth, facebookProvider)
     .then((result) => {
       if (getAdditionalUserInfo(result).isNewUser) {
         askMoreInfo(result);
       } else {
-        /* console.log('Already registered'); */
         onNavigate('/home');
       }
+      userCreatedFacebook = true;
+    }).catch((error) => {
+      console.log(error);
+      userCreatedFacebook = false;
     });
-/* .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.email;
-      const credential = FacebookAuthProvider.credentialFromError(error);
-    }); */
+  return userCreatedFacebook;
 };
 
 // Sign up with Github
-const githubProvider = new GithubAuthProvider();
+export const signUpGithub = async () => {
+  const auth = getAuth(app);
+  const githubProvider = new GithubAuthProvider();
+  let userCreatedGithub;
 
-export const signUpGithub = () => {
-  signInWithPopup(auth, githubProvider)
+  await signInWithPopup(auth, githubProvider)
     .then((result) => {
-      /* const credential = GithubAuthProvider.credentialFromResult(result);
-      const user = result.user;
-      console.log(user); */
       if (getAdditionalUserInfo(result).isNewUser) {
         askMoreInfo(result);
       } else {
-        /* console.log('Already registered'); */
         onNavigate('/home');
       }
+      userCreatedGithub = true;
+    }).catch((error) => {
+      console.log(error);
+      userCreatedGithub = false;
     });
-  /* .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.email;
-      const credential = GithubAuthProvider.credentialFromError(error);
-    }); */
+  return userCreatedGithub;
 };
 
-// sign in with email and password in welcome back page
-export const signInAccount = (email, pass) => signInWithEmailAndPassword(auth, email, pass);
+// Sign in with email and password
+export async function signInAccount(email, pass) {
+  const auth = getAuth(app);
+  await signInWithEmailAndPassword(auth, email, pass);
+}
 
 // Sign Out
+export const signOutBR = () => {
+  const auth = getAuth(app);
+  signOut(auth);
+};
 
-export const signOutBR = () => signOut(auth);
+// Revisar
+/* const auth = getAuth(app); // Init firebase app
+
+// Current user id
+let currentUserUid = '';
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    const uid = user.uid;
+    const displayName = user.displayName;
+    const email = user.email;
+
+    currentUserUid = uid;
+    console.log(`${displayName} - ${email} - ${uid}`);
+  } else {
+    // User is signed out
+    console.log('User signed out');
+    onNavigate('/');
+  }
+}); */
