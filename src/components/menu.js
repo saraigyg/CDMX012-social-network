@@ -55,11 +55,6 @@ export const menu = () => {
     }).catch((error) => {
       console.log(error);
     });
-
-    // signOutBR();
-    // const body = document.body;
-    // body.style.overflow = '';
-    // onNavigate('/');
   });
 
   menuContainer.append(profileInfo, configuration);

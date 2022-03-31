@@ -111,4 +111,7 @@ export const signInAccount = (email, pass) => signInWithEmailAndPassword(auth, e
 
 // Sign Out
 
-export const signOutBR = () => signOut(auth);
+export const signOutBR = async () => {
+  const out = await signOut(auth);
+  return out;
+};
