@@ -12,11 +12,13 @@ export const genericModal = (funcion, parametros, textModal) => {
     modalContent.setAttribute('class', 'modal-content');
     const closebtn = document.createElement('span');
     closebtn.setAttribute('class', 'close-button');
+    closebtn.setAttribute('id', 'close-button');
     closebtn.innerHTML = 'x';
     const txtModal = document.createElement('h2');
     txtModal.innerHTML = textModal;
     const acceptbtn = document.createElement('button');
     acceptbtn.setAttribute('class', 'accept-btn');
+    acceptbtn.setAttribute('id', 'accept-btn');
     acceptbtn.innerHTML = 'Yes';
 
     closebtn.addEventListener('click', () => {

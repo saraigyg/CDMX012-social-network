@@ -45,3 +45,29 @@ describe('the function dislike modify the list of likes', () => {
     dislike(...elements);
   });
 });
+
+describe('conditional on click to be true', () => {
+  test('render a modified list', () => {
+    const elements = [false, 2, 'saraiDos', 'sarai12', ['mario', 'charlotte']];
+    const div = like(...elements);
+    document.body.innerHTML = '<div id="root"></div>';
+    const rootDiv = document.getElementById('root');
+    rootDiv.appendChild(div);
+    const btn = document.querySelector('#like-btn');
+    btn.dispatchEvent(new Event('click'));
+    expect(rootDiv.innerHTML.includes('./assets/heart.png')).toBe(true);
+  });
+});
+
+describe('conditional on click also to be true', () => {
+  test('render a modified list', () => {
+    const elements = [true, 2, 'saraiDos', 'sarai12', ['mario', 'charlotte']];
+    const div = like(...elements);
+    document.body.innerHTML = '<div id="root"></div>';
+    const rootDiv = document.getElementById('root');
+    rootDiv.appendChild(div);
+    const btn = document.querySelector('#like-btn');
+    btn.dispatchEvent(new Event('click'));
+    expect(rootDiv.innerHTML.includes('./assets/like.png')).toBe(true);
+  });
+});

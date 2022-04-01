@@ -3,6 +3,7 @@ import { dislike, giveLike } from '../lib/likes.js';
 export const like = (click, likeCount, userId, postId, likeList) => {
   const likeElement = document.createElement('div');
   likeElement.setAttribute('class', 'like-btn');
+  likeElement.setAttribute('id', 'like-btn');
   if (click === true) {
     likeElement.innerHTML = '<img src= "./assets/heart.png" alt="like fill button">';
   } else {
