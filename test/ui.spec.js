@@ -3,7 +3,7 @@
  */
 import {
   showSignUpError, showIncorrectPass, showPassword, showAndHideItems, usernameError, usernameTaken,
-  validUsername, emptyFields,
+  validUsername, emptyFields, goToTop, cleanForm,
 } from '../src/components/ui.js';
 
 jest.mock('../src/firebase-imports.js');
@@ -159,5 +159,28 @@ describe('Tests to check error message when there are empty fields', () => {
 
     expect(errorArea.innerHTML).toBe('Profile name and/or username cannot be empty');
     expect(errorArea.style.color).toBe('red');
+  });
+});
+
+describe('Go to top function', () => {
+  test('scrollIntoView was called', () => {
+    const scrollIntoViewMock = jest.fn();
+    window.HTMLElement.prototype.scrollIntoView = scrollIntoViewMock;
+    goToTop();
+
+    expect(scrollIntoViewMock).toBeCalled();
+  });
+});
+
+describe('Clean form', () => {
+  test('the inputs in the form were cleaned', () => {
+    document.body.innerHTML = `<form id="readingForm">
+    <input type="text" id="input1"></form>`;
+    const inputArea = document.getElementById('input1');
+    inputArea.innerHTML = 'Example test';
+
+    cleanForm();
+
+    expect(inputArea.value).toBe('');
   });
 });
