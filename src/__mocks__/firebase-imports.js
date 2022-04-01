@@ -39,7 +39,15 @@ export class GithubAuthProvider {
     this.name = 'git';
   }
 }
-export const getAdditionalUserInfo = () => Promise.resolve({});
+export const getAdditionalUserInfo = jest.fn((result) => {
+  const aditionalUserInfo = {
+    isNewUser: true,
+    providerId: 'google.com',
+    user: { displayName: 'Ana' },
+  };
+
+  return Promise.resolve(aditionalUserInfo);
+});
 export const signInWithEmailAndPassword = () => Promise.resolve({});
 export const deleteDoc = () => Promise.resolve({});
 export const query = () => Promise.resolve({});
