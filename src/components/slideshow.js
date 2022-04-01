@@ -23,10 +23,12 @@ export const slideshow = () => {
 
   const btnPrev = document.createElement('a');
   btnPrev.setAttribute('class', 'btnPrev');
+  btnPrev.setAttribute('id', 'btnPrev');
   btnPrev.innerHTML = '&#10094;';
 
   const btnNext = document.createElement('a');
   btnNext.setAttribute('class', 'btnNext');
+  btnNext.setAttribute('id', 'btnNext');
   btnNext.innerHTML = '&#10095;';
 
   function showSlides(n) {
