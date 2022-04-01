@@ -44,6 +44,7 @@ export const signUpGoogle = async () => {
   await signInWithPopup(auth, googleProvider)
     .then((result) => {
       if (getAdditionalUserInfo(result).isNewUser) {
+        console.log('prueba');
         askMoreInfo(result);
       } else {
         onNavigate('/home');
