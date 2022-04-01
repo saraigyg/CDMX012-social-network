@@ -22,24 +22,6 @@ describe('askMoreInfo function', () => {
     askMoreInfo(result);
     expect(window.location.pathname).toBe('/add-info');
   });
-
-  test('Name value in the user object is shown as the name in the form', () => {
-    document.body.innerHTML = `<div id="root">
-      <form id="signUpForm">
-      <input name="name" id="nameUser"> </form> </div>`;
-
-    const userInfo = {
-      isNewUser: true,
-      providerId: 'google.com',
-      user: { displayName: 'Ana' },
-    };
-
-    askMoreInfo(userInfo);
-    const nameInForm = document.querySelector('#nameUser');
-    console.log(nameInForm.innerHTML);
-
-    expect(nameInForm.value).toBe('Ana');
-  });
 });
 
 describe('Sign up with Google', () => {
@@ -55,31 +37,6 @@ describe('Sign up with Google', () => {
     expect(window.location.pathname).toBe('/home');
   });
 
-  /* test('If the user is new, they are sent to the add-info page', async () => {
-    const rootDiv = document.getElementById('root');
-    while (rootDiv.firstChild) {
-      rootDiv.removeChild(rootDiv.firstChild);
-    }
-    /* document.body.innerHTML = `<div id="root">
-      <form id="signUpForm">
-      <input name="name"> </form> </div>`;
-    jest.clearAllMocks();
-
-    getAdditionalUserInfo.mockResolvedValue({
-      isNewUser: true,
-      providerId: 'google.com',
-      user: { displayName: 'Ana' },
-    });
-    const result = getAdditionalUserInfo;
-
-    const askInfo = jest.fn(askMoreInfo(result));
-
-    await signUpGoogle();
-
-    /* expect(askInfo).toBeCalled();
-    expect(window.location.pathname).toBe('/add-info');
-  }); */
-
   test('Failed sign up process', async () => {
     signInWithPopup.mockRejectedValue();
     const createAcc = await signUpGoogle();
@@ -94,6 +51,12 @@ describe('Sign up with Facebook', () => {
     expect(createAcc).toBe(true);
   });
 
+  test('Homepage is rendered after user is signed-up', async () => {
+    await signUpFacebook();
+
+    expect(window.location.pathname).toBe('/home');
+  });
+
   test('Failed sign up process', async () => {
     signInWithPopup.mockRejectedValue();
     const createAcc = await signUpFacebook();
@@ -106,6 +69,12 @@ describe('Sign up with GitHub', () => {
     signInWithPopup.mockResolvedValue();
     const createAcc = await signUpGithub();
     expect(createAcc).toBe(true);
+  });
+
+  test('Homepage is rendered after user is signed-up', async () => {
+    await signUpGithub();
+
+    expect(window.location.pathname).toBe('/home');
   });
 
   test('Failed sign up process', async () => {
