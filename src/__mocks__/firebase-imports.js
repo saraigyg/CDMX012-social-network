@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable max-classes-per-file */
 export const getFirestore = () => Promise.resolve({});
 export const doc = (db, collection, docId) => ({ db, collection, docId });
@@ -22,7 +23,7 @@ export const getAuth = (app) => user;
 export const onAuthStateChanged = () => Promise.resolve({});
 export const initializeApp = () => Promise.resolve({});
 export const createUserWithEmailAndPassword = () => Promise.resolve({});
-export const signInWithPopup = () => Promise.resolve({});
+export const signInWithPopup = jest.fn((auth, provider) => Promise.resolve({}));
 export class GoogleAuthProvider {
   constructor() {
     this.name = 'google';

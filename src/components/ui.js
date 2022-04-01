@@ -81,3 +81,8 @@ export const goToTop = () => {
     behavior: 'smooth',
   });
 };
+
+export const cleanForm = () => {
+  const form = document.querySelector('#readingForm');
+  form.reset();
+};
