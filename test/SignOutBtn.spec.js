@@ -2,15 +2,17 @@
 /**
  * @jest-environment jsdom
  */
-// import { onNavigate } from '../src/app.js';
-import { menu } from '../src/components/menu.js';
+import { onNavigate } from '../src/app.js';
 import { getDoc } from '../src/firebase-imports.js';
 
 jest.mock('../src/firebase-imports.js');
 
-describe.only('Sign out btn in hamburger menu', (done) => {
-  it.only('When clicking "Sign out" in should navigate to homepage', () => {
-    document.body.innerHTML = '<div id="root"><div class="readingPage"></div></div>';
+describe.only('Sign out btn in hamburger menu', () => {
+  it.only('When clicking "Sign out" in should navigate to homepage', async () => {
+    document.body.innerHTML = '<div id="root"></div>';
+
+    onNavigate('/home');
+    expect(window.location.pathname).toBe('/home'); // nos aseguramos q estemos en home
 
     getDoc.mockResolvedValue({
       exists: () => true,
@@ -19,25 +21,22 @@ describe.only('Sign out btn in hamburger menu', (done) => {
         username: 'username1',
         bio: 'texto',
       }),
-    });
+    }); // Mockeamos getDoc ya que queremos un comporamiento especifico para este test
 
-    // expect.assertions(1);
-
-    window.history.pushState = jest.fn();
-
-    const feedDiv = document.querySelector('.readingPage');
-    const menuHam = menu();
-    feedDiv.append(menuHam);
+    const hamMenu = document.querySelector('.config-menu');
+    hamMenu.dispatchEvent(new Event('click')); // click para abrir menú de hamburguesa
     const signout = document.querySelector('#out');
-    signout.dispatchEvent(new Event('click'));
-    const hasChild = document.querySelector('.lp-content') != null; // it will return true if lp-content exists in div root
-    console.log(hasChild);
+    signout.dispatchEvent(new Event('click')); // click para cerrar sesion dentro de menú
+    // eslint-disable-next-line no-use-before-define
+    await tick(); // Se da tiempo para que la promesa (en este caso la de signOut) se resuelva
 
-    setTimeout(() => {
-      console.log('aaaaaaaaaaaaaaaaaaaaa', window.history.pushState.mock.calls);
-      done();
-    }, 1000);
+    function tick() {
+      return new Promise((resolve) => {
+        setTimeout(resolve, 0);
+      });
+    }
 
-    // expect(hasChild).toBe(true);
+    const hasChild2 = document.querySelector('.lp-content') != null; // it will return true if lp-content exists in div root
+    expect(hasChild2).toBe(true);
   });
 });
