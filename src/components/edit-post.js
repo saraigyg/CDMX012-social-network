@@ -4,14 +4,12 @@ function saveChanges(postData, node, newData) {
   const idDoc = postData.idDocument;
 
   updatePost(idDoc, newData).then(() => {
-    console.log('Post edited');
+    // console.log('Post edited');
     // eslint-disable-next-line no-param-reassign
     node.innerHTML = `<div class="post-content">
     <div><img src= "./assets/open-book.png" class= "book-icon"><p><strong>  ${newData.reading}</strong></p></div> <br>
     <p>${newData.text}</p>
     </div>`;
-
-    console.log(node.innerHTML);
   }).catch((error) => {
     console.log(error, 'Post cannot be update');
   });
