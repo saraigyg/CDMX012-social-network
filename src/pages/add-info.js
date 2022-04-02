@@ -5,6 +5,7 @@ import { onNavigate } from '../app.js';
 export const addInfoPage = () => {
   const addInfoContent = document.createElement('div');
   addInfoContent.setAttribute('class', 'lp-content');
+  addInfoContent.setAttribute('id', 'lp-content');
 
   const lpImage = document.createElement('div');
   lpImage.setAttribute('class', 'landing-page-img');
@@ -92,6 +93,7 @@ export const addInfoPage = () => {
   const btnAccept = document.createElement('input');
   btnAccept.setAttribute('type', 'button');
   btnAccept.setAttribute('class', 'btn-accept');
+  btnAccept.setAttribute('id', 'btn-accept');
   btnAccept.setAttribute('value', 'Accept');
 
   addInfoContainer.append(addInfoTitle, addInfoForm, btnAccept, errorForm);
