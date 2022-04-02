@@ -12,7 +12,6 @@ describe('Tests  of landingPage', () => {
     document.body.innerHTML = '<div id="root"></div>';
     const rootDiv = document.getElementById('root');
     rootDiv.appendChild(renderLanding);
-    console.log(document.body.innerHTML);
     expect(rootDiv.innerHTML).toMatchSnapshot();
   });
   test('should render sign-up page', () => {
