@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 import { addInfoPage } from '../src/pages/add-info.js';
-import { isValidField } from '../src/lib/saveInfo.js';
 
 jest.mock('../src/firebase-imports.js');
 
