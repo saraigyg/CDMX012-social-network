@@ -75,23 +75,23 @@ src="images/feedPrototype.png"/>
 ## 4. Interfaz gráfica final
 La interfas gráfica está optimizada para ser vista en dispositivos móviles. Las pantallas a las que puede acceder el usuario se muestran a continuación.
 
-*Landing-page de Bookreads.*
-![Landing page de BookReads](./src/assets/bookreads-landing.png)
+*Landing-page de Bookreads.*<br>
+![Landing page de BookReads](/images/bookreads-landing.png)
 
-*Creación de cuenta.*
-![Crea una cuenta](./src/assets/bookreads-create-acc.png)
+*Creación de cuenta.*<br>
+![Crea una cuenta](/images/bookreads-create-acc.png)
 
-*Agregar información al perfil de un usuario nuevo.*
-![Agregar información al perfil del usuario](./src/assets/bookreads-add-info.png)
+*Agregar información al perfil de un usuario nuevo.*<br>
+![Agregar información al perfil del usuario](/images/bookreads-add-info.png)
 
-*Iniciar sesión.*
-![Inicia sesión](./src/assets/bookreads-sign-in.png)
+*Iniciar sesión.*<br>
+![Inicia sesión](/images/bookreads-sing-in.png)
 
-*Vista del timeline.*
-![Vista del timeline](./src/assets/bookreads-timeline.png)
+*Vista del timeline.*<br>
+![Vista del timeline](/images/bookreads-timeline.png)
 
-*Vista del timeline enfocada en las publicaciones.*
-![Vista del timeline al hacer scroll](./src/assets/bookreads-timeline-2.png)
+*Vista del timeline enfocada en las publicaciones.*<br>
+![Vista del timeline al hacer scroll](/images/bookreads-timeline-2.png)
 
-*Visualización de la información del perfil del usuario y opción de cerrar sesión.*
-![Perfil y opción de cerrar sesión](./src/assets/bookreads-user-profile.png)
+*Visualización de la información del perfil del usuario y opción de cerrar sesión.*<br>
+![Perfil y opción de cerrar sesión](/images/bookreads-user-profile.png)
